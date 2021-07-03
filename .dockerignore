@@ -1,0 +1,10 @@
+.dbdata
+.git
+.idea
+package-lock.json
+node_modules
+storage/framework/cache/**
+storage/framework/sessions/**
+storage/framework/views/**
+storage/app/public/**
+storage/app/jsons_teste/**
