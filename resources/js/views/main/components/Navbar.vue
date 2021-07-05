@@ -65,6 +65,7 @@
 </template>
 <script>
 import api from "../../../api/auth";
+import ACL from '../../../plugin/acl';
 export default {
   name: "Navbar",
   data() {
@@ -86,6 +87,7 @@ export default {
         .authenticated()
         .then((r) => {
           this.authUser = r.data;
+          Vue.prototype.$acl = new ACL.Acl(r.data);
           localStorage.setItem("auth", "true");
         })
         .catch(() => {

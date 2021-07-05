@@ -2210,6 +2210,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _api_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../api/auth */ "./resources/js/api/auth.js");
+/* harmony import */ var _plugin_acl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../plugin/acl */ "./resources/js/plugin/acl.js");
 //
 //
 //
@@ -2275,6 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Navbar",
@@ -2297,6 +2299,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _api_auth__WEBPACK_IMPORTED_MODULE_0__.default.authenticated().then(function (r) {
         _this.authUser = r.data;
+        Vue.prototype.$acl = new _plugin_acl__WEBPACK_IMPORTED_MODULE_1__.default.Acl(r.data);
         localStorage.setItem("auth", "true");
       })["catch"](function () {
         _this.authUser = null;
@@ -2358,6 +2361,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
+Vue.prototype.$acl = false;
 var app = new Vue({
   el: '#app',
   components: {
@@ -2410,6 +2414,53 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/plugin/acl.js":
+/*!************************************!*\
+  !*** ./resources/js/plugin/acl.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Acl = /*#__PURE__*/function () {
+  function Acl(user) {
+    _classCallCheck(this, Acl);
+
+    this.user = user;
+  }
+
+  _createClass(Acl, [{
+    key: "permissions",
+    value: function permissions() {
+      return this.user.permissions.map(function (permission) {
+        return permission.name;
+      });
+    }
+  }, {
+    key: "hasPermissionTo",
+    value: function hasPermissionTo(string) {
+      return this.permissions().includes(string);
+    }
+  }]);
+
+  return Acl;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  Acl: Acl
+});
 
 /***/ }),
 
