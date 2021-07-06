@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "vue-router": "^3.5.1",
-        "vue-toastr": "^2.1.2"
+        "vue-toastr": "^2.1.2",
+        "laravel-vue-pagination": "^2.3.1"
     }
 }
