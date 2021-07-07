@@ -69,12 +69,16 @@
                             </h4>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <button
+                            <router-link
+                              :to="{
+                                name: 'shopcart',
+                                params: { produtoId: produto.id },
+                              }"
                               v-if="produto.quantidade > 0"
                               class="btn btn-primary btn-sm"
                             >
-                              comprar
-                            </button>
+                              Comprar
+                            </router-link>
                             <button
                               v-else
                               class="btn btn-danger btn-sm"

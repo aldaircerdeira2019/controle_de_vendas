@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from '../views/home/Home.vue';
 import Login from '../views/auth/Login';
 import Register from '../views/auth/Register';
+import Shopcart from '../views/shopcart/Shopcart';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,12 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
+  },
+  {
+    path: '/shopcart/:produtoId',
+    name: 'shopcart',
+    component: Shopcart,
+    meta: { authOnly: true }
   }
 ];
 

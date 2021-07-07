@@ -20,9 +20,11 @@ class CreateVendasTable extends Migration
             $table->integer('quantidade');
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('produto_id');
+            $table->unsignedBigInteger('cliente_id');
 
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->timestamps();
         });
     }

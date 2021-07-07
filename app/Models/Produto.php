@@ -9,6 +9,15 @@ class Produto extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nome',
+        'decricao',
+        'quantidade',
+        'valor',
+        'foto',
+        'empresa_id',
+    ];
+
     public function search(array $request){
 
         $result = $this
