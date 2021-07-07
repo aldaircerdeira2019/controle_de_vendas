@@ -19,7 +19,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+            <li class="nav-item">
               <router-link :to="{ name: 'order' }" class="nav-link">
                 Meus Pedidos
               </router-link>
@@ -27,6 +27,11 @@
           </ul>
 
           <ul v-if="authUser" class="navbar-nav ml-auto">
+            <li v-if="this.$acl.hasPermissionTo('admin_view')" class="nav-item">
+              <router-link :to="{ name: 'admin.empresa' }" class="nav-link">
+                Administrador
+              </router-link>
+            </li>
             <li class="nav-item dropdown">
               <a
                 id="navbarDropdown"
@@ -71,7 +76,7 @@
 </template>
 <script>
 import api from "../../../api/auth";
-import ACL from '../../../plugin/acl';
+import ACL from "../../../plugin/acl";
 export default {
   name: "Navbar",
   data() {
