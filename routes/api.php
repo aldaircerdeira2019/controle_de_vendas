@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{ RegisterController, LoginController, Authenticated };
 use App\Http\Controllers\{ HomeController };
-use App\Http\Controllers\User\{ ClienteController, ShopcartController };
+use App\Http\Controllers\User\{ ClienteController, ShopcartController, OrderController };
 
 Route::middleware('auth:sanctum')->get('/authenticated', [Authenticated::class, 'index']);
 
@@ -22,5 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::resource('cliente', ClienteController::class)->only(['store']);
         Route::get('findOneProduto/{id}' , [ShopcartController::class, 'findOneProduto']);
         Route::post('createOrder' , [ShopcartController::class, 'createOrder']);
+        Route::get('order/{cliete_id}' , [OrderController::class, 'findAllOrderByClient']);
     });
 });

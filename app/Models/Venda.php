@@ -17,4 +17,14 @@ class Venda extends Model
         'produto_id',
         'cliente_id',
     ];
+
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class);
+    }
 }

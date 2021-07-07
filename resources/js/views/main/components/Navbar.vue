@@ -18,7 +18,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+              <router-link :to="{ name: 'order' }" class="nav-link">
+                Meus Pedidos
+              </router-link>
+            </li>
+          </ul>
 
           <ul v-if="authUser" class="navbar-nav ml-auto">
             <li class="nav-item dropdown">

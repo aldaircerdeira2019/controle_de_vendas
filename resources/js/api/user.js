@@ -19,7 +19,10 @@ let api = {
   },
   createOrder(params) {
     return axios.post(rota + 'usuario/createOrder', params);
-  }
+  },
+  findAllOrder(id) {
+    return axios.get(rota + 'usuario/order/' + id);
+  },
 
 };
 

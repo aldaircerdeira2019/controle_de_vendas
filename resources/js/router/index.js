@@ -4,6 +4,7 @@ import Home from '../views/home/Home.vue';
 import Login from '../views/auth/Login';
 import Register from '../views/auth/Register';
 import Shopcart from '../views/shopcart/Shopcart';
+import Order from '../views/order/Order';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,12 @@ const routes = [
     path: '/shopcart/:produtoId',
     name: 'shopcart',
     component: Shopcart,
+    meta: { authOnly: true }
+  },
+  {
+    path: '/pedidos',
+    name: 'order',
+    component: Order,
     meta: { authOnly: true }
   }
 ];
