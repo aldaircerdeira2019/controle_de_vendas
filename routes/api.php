@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{ RegisterController, LoginController, Authenticated };
 use App\Http\Controllers\{ HomeController };
 use App\Http\Controllers\User\{ ClienteController, ShopcartController, OrderController };
+use App\Http\Controllers\Admin\{ EmpresaController };
 
 Route::middleware('auth:sanctum')->get('/authenticated', [Authenticated::class, 'index']);
 
@@ -23,5 +24,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('findOneProduto/{id}' , [ShopcartController::class, 'findOneProduto']);
         Route::post('createOrder' , [ShopcartController::class, 'createOrder']);
         Route::get('order/{cliete_id}' , [OrderController::class, 'findAllOrderByClient']);
+    });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('/empresa', EmpresaController::class)->only(['index','store']);
     });
 });

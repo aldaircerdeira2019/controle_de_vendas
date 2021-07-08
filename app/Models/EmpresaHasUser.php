@@ -9,5 +9,10 @@ class EmpresaHasUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'empresa_id',
+    ];
+
     public $timestamps = false;
 }
