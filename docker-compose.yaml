@@ -8,8 +8,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8000"
-    volumes:
-      - ./:/app
     depends_on:
     - mysql-app
     networks:
