@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{ RegisterController, LoginController, Authenticated };
 use App\Http\Controllers\{ HomeController };
 use App\Http\Controllers\User\{ ClienteController, ShopcartController, OrderController };
-use App\Http\Controllers\Admin\{ EmpresaController };
+use App\Http\Controllers\Admin\{ EmpresaController, RelatorioController };
 
 Route::middleware('auth:sanctum')->get('/authenticated', [Authenticated::class, 'index']);
 
@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::prefix('admin')->group(function () {
         Route::resource('/empresa', EmpresaController::class)->only(['index','store','update', 'destroy']);
+        Route::get('relatorio',[ RelatorioController::class, 'index']);
     });
 });

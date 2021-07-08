@@ -6,6 +6,7 @@ import Register from '../views/auth/Register';
 import Shopcart from '../views/shopcart/Shopcart';
 import Order from '../views/order/Order';
 import Empresa from '../views/admin/empresa/Empresa';
+import Relatorio from '../views/admin/relatorio/Relatorio';
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,12 @@ const routes = [
     path: '/admin/empresa',
     name: 'admin.empresa',
     component: Empresa,
+    meta: { authOnly: true }
+  },
+  {
+    path: '/admin/relatorio',
+    name: 'admin.relatorio',
+    component: Relatorio,
     meta: { authOnly: true }
   }
 ];

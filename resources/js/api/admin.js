@@ -19,6 +19,10 @@ let api = {
     return axios.delete(rota + "admin/empresa/" + id);
   },
 
+  getRelatorio(params) {
+    return axios.get(rota + "admin/relatorio", {params});
+  },
+
   getCep(cep) {
     return axios.get(`https://viacep.com.br/ws/${cep}/json/`);
   },

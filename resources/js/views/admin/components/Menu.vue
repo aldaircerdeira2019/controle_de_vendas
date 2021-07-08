@@ -25,31 +25,18 @@
               >
                 Administrador
               </button>
-              <button
-                type="button"
+              <router-link
+                :to="{ name: 'admin.empresa' }"
                 class="list-group-item list-group-item-action"
               >
-                A second item
-              </button>
-              <button
-                type="button"
+                Empresas
+              </router-link>
+              <router-link
+                :to="{ name: 'admin.relatorio' }"
                 class="list-group-item list-group-item-action"
               >
-                A third button item
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
-                A fourth button item
-              </button>
-              <button
-                type="button"
-                class="list-group-item list-group-item-action"
-                disabled
-              >
-                A disabled button item
-              </button>
+                Relatorio
+              </router-link>
             </div>
           </div>
         </div>
