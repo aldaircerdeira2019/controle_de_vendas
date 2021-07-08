@@ -20,4 +20,10 @@ class EmpresaController extends Controller
         $empresa = $empresaService->createEmpresa($request->all());
         return $empresa;
     }
+
+    public function update(EmpresaRequest $request, $id){
+        $empresa = Empresa::find($id);
+        $empresa->update($request->all());
+        return $empresa;
+    }
 }

@@ -14,17 +14,22 @@ class EmpresaRequest extends FormRequest
 
     public function rules()
     {
+        $id= $this->segment(4);
+
+        $email = $id !=null ? '':'required';
+        $password = $id !=null ? '': 'required';
+
         return [
             'nome' => 'required|min:10|max:60',
-            'cnpj' => 'required|min:18|unique:empresas',
+            'cnpj' => "required|min:18|unique:empresas,cnpj,{$id},id",
             'cep' => 'required|min:9',
             'razao_social' => 'required',
             'rua' => 'required',
             'bairro' => 'required',
             'cidade' => 'required',
             'uf' => 'required|min:2',
-            'email' => 'required|email|unique:users',
-            'password'=> 'required|min:6|max:10|confirmed',
+            'email' => "{$email}|email|unique:users",
+            'password'=> "{$password}|min:6|max:10|confirmed",
         ];
     }
 }

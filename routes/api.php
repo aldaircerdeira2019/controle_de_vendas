@@ -27,6 +27,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
 
     Route::prefix('admin')->group(function () {
-        Route::resource('/empresa', EmpresaController::class)->only(['index','store']);
+        Route::resource('/empresa', EmpresaController::class)->only(['index','store','update']);
     });
 });

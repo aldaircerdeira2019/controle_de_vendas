@@ -8,7 +8,12 @@
             <div class="card-header">
               <h5 class="card-title text-center">
                 EMPRESAS
-                <button @click.prevent="enviarCreate()" class="btn btn-primary btn-sm float-right">Novo</button>
+                <button
+                  @click.prevent="enviarCreate()"
+                  class="btn btn-primary btn-sm float-right"
+                >
+                  Novo
+                </button>
               </h5>
             </div>
             <div class="card-body">
@@ -37,7 +42,12 @@
                           role="group"
                           aria-label="Basic example"
                         >
-                          <button class="btn btn-primary btn-sm">editar</button>
+                          <button
+                            @click.prevent="enviarUpdate(empresa)"
+                            class="btn btn-primary btn-sm"
+                          >
+                            editar
+                          </button>
                           <button class="btn btn-danger btn-sm">excluir</button>
                         </div>
                       </td>
@@ -56,16 +66,18 @@
       </div>
     </div>
     <CreateEmpresa ref="create"></CreateEmpresa>
+    <UpdateEmpresa ref="update"></UpdateEmpresa>
   </div>
 </template>
 
 <script>
 import Menu from "../components/Menu";
 import api from "../../../api/admin";
-import CreateEmpresa from './components/CreateEmpresa';
+import CreateEmpresa from "./components/CreateEmpresa";
+import UpdateEmpresa from "./components/UpdateEmpresa";
 export default {
   name: "Empresa",
-  components: { Menu, CreateEmpresa},
+  components: { Menu, CreateEmpresa, UpdateEmpresa },
   data() {
     return {
       loading: false,
@@ -89,8 +101,11 @@ export default {
           console.log(error.response.data);
         });
     },
-    enviarCreate () {
+    enviarCreate() {
       this.$refs.create.modalPost();
+    },
+    enviarUpdate(empresa) {
+      this.$refs.update.modalPut(empresa);
     },
   },
 };

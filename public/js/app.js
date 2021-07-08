@@ -1936,6 +1936,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Menu */ "./resources/js/views/admin/components/Menu.vue");
 /* harmony import */ var _api_admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../api/admin */ "./resources/js/api/admin.js");
 /* harmony import */ var _components_CreateEmpresa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/CreateEmpresa */ "./resources/js/views/admin/empresa/components/CreateEmpresa.vue");
+/* harmony import */ var _components_UpdateEmpresa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/UpdateEmpresa */ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue");
 //
 //
 //
@@ -1997,6 +1998,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2004,7 +2017,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "Empresa",
   components: {
     Menu: _components_Menu__WEBPACK_IMPORTED_MODULE_0__.default,
-    CreateEmpresa: _components_CreateEmpresa__WEBPACK_IMPORTED_MODULE_2__.default
+    CreateEmpresa: _components_CreateEmpresa__WEBPACK_IMPORTED_MODULE_2__.default,
+    UpdateEmpresa: _components_UpdateEmpresa__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -2029,6 +2043,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     enviarCreate: function enviarCreate() {
       this.$refs.create.modalPost();
+    },
+    enviarUpdate: function enviarUpdate(empresa) {
+      this.$refs.update.modalPut(empresa);
     }
   }
 });
@@ -2329,6 +2346,257 @@ __webpack_require__.r(__webpack_exports__);
 
         _this2.$toastr.e("Ocorreu um erro.");
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _api_admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../api/admin */ "./resources/js/api/admin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    TheMask: vue_the_mask__WEBPACK_IMPORTED_MODULE_0__.TheMask
+  },
+  data: function data() {
+    return {
+      empresa: {},
+      errors: {}
+    };
+  },
+  methods: {
+    getCep: function getCep(string) {
+      var _this = this;
+
+      if (string.length < 9) {
+        this.$toastr.e("CEP imcompleto");
+      } else {
+        var cep = string.replace(/[^0-9]/g, "");
+        _api_admin__WEBPACK_IMPORTED_MODULE_1__.default.getCep(cep).then(function (r) {
+          _this.empresa.rua = r.data.logradouro;
+          _this.empresa.bairro = r.data.bairro;
+          _this.empresa.complemento = r.data.complemento;
+          _this.empresa.cidade = r.data.localidade;
+          _this.empresa.uf = r.data.uf;
+        })["catch"](function () {
+          _this.$toastr.e("endereço não encontrado, informe o endereço manualmento.");
+        });
+      }
+    },
+    update: function update() {
+      var _this2 = this;
+
+      _api_admin__WEBPACK_IMPORTED_MODULE_1__.default.EmpresaUpdate(this.empresa).then(function (r) {
+        _this2.$toastr.s("Atualizado com sucesso!");
+
+        $("#ModalUpdate").modal("hide");
+
+        _this2.$parent.getEmpresa();
+      })["catch"](function (error) {
+        console.log(error.response.data);
+
+        if (error.response.status === 422) {
+          _this2.errors = error.response.data.errors;
+        }
+
+        _this2.$toastr.e("Ocorreu um erro.");
+      });
+    },
+    modalPut: function modalPut(empresa) {
+      this.empresa = empresa;
+      this.errors = {};
+      $("#ModalUpdate").modal("show");
     }
   }
 });
@@ -3609,6 +3877,9 @@ var api = {
   },
   EmpresaStore: function EmpresaStore(params) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post(rota + "admin/empresa", params);
+  },
+  EmpresaUpdate: function EmpresaUpdate(params) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().put(rota + "admin/empresa/" + params.id, params);
   },
   getCep: function getCep(cep) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://viacep.com.br/ws/".concat(cep, "/json/"));
@@ -40809,6 +41080,45 @@ component.options.__file = "resources/js/views/admin/empresa/components/CreateEm
 
 /***/ }),
 
+/***/ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/UpdateEmpresa.vue ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateEmpresa.vue?vue&type=template&id=a577c628& */ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628&");
+/* harmony import */ var _UpdateEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _UpdateEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/admin/empresa/components/UpdateEmpresa.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/views/auth/Login.vue":
 /*!*******************************************!*\
   !*** ./resources/js/views/auth/Login.vue ***!
@@ -41208,6 +41518,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/views/auth/Login.vue?vue&type=script&lang=js&":
 /*!********************************************************************!*\
   !*** ./resources/js/views/auth/Login.vue?vue&type=script&lang=js& ***!
@@ -41399,6 +41725,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateEmpresa_vue_vue_type_template_id_1e51a6d9___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateEmpresa_vue_vue_type_template_id_1e51a6d9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateEmpresa.vue?vue&type=template&id=1e51a6d9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/CreateEmpresa.vue?vue&type=template&id=1e51a6d9&");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateEmpresa_vue_vue_type_template_id_a577c628___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateEmpresa.vue?vue&type=template&id=a577c628& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628&");
 
 
 /***/ }),
@@ -41732,7 +42075,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Novo")]
+                      [_vm._v("\n                Novo\n              ")]
                     )
                   ])
                 ]),
@@ -41758,7 +42101,43 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(empresa.uf))]),
                             _vm._v(" "),
-                            _vm._m(1, true)
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "btn-group",
+                                  attrs: {
+                                    role: "group",
+                                    "aria-label": "Basic example"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-primary btn-sm",
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.enviarUpdate(empresa)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                          editar\n                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    { staticClass: "btn btn-danger btn-sm" },
+                                    [_vm._v("excluir")]
+                                  )
+                                ]
+                              )
+                            ])
                           ])
                         }),
                         0
@@ -41770,7 +42149,7 @@ var render = function() {
                     ? _c(
                         "div",
                         { staticClass: "d-flex justify-content-center" },
-                        [_vm._m(2)]
+                        [_vm._m(1)]
                       )
                     : _vm._e()
                 ])
@@ -41781,7 +42160,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("CreateEmpresa", { ref: "create" })
+      _c("CreateEmpresa", { ref: "create" }),
+      _vm._v(" "),
+      _c("UpdateEmpresa", { ref: "update" })
     ],
     1
   )
@@ -41805,29 +42186,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Ação")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        {
-          staticClass: "btn-group",
-          attrs: { role: "group", "aria-label": "Basic example" }
-        },
-        [
-          _c("button", { staticClass: "btn btn-primary btn-sm" }, [
-            _vm._v("editar")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn btn-danger btn-sm" }, [
-            _vm._v("excluir")
-          ])
-        ]
-      )
     ])
   },
   function() {
@@ -42453,6 +42811,498 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", [_vm._v("Nova Empresa")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=template&id=a577c628& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "ModalUpdate",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "ModalUpdateLabel",
+          "aria-hidden": "true",
+          "data-backdrop": "static"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-01" } },
+                    [_vm._v("Nome da Empresa")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.nome,
+                        expression: "empresa.nome"
+                      }
+                    ],
+                    class:
+                      "form-control " + (_vm.errors.nome ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-01" },
+                    domProps: { value: _vm.empresa.nome },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.empresa, "nome", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.nome
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.nome[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-form-label",
+                        attrs: { for: "up-02" }
+                      },
+                      [_vm._v("CNPJ")]
+                    ),
+                    _vm._v(" "),
+                    _c("the-mask", {
+                      class:
+                        "form-control " + (_vm.errors.cnpj ? "is-invalid" : ""),
+                      attrs: {
+                        type: "text",
+                        mask: "##.###.###/####-##",
+                        masked: true,
+                        id: "up-02"
+                      },
+                      model: {
+                        value: _vm.empresa.cnpj,
+                        callback: function($$v) {
+                          _vm.$set(_vm.empresa, "cnpj", $$v)
+                        },
+                        expression: "empresa.cnpj"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.cnpj
+                      ? _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.errors.cnpj[0]) +
+                              "\n              "
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-03" } },
+                    [_vm._v("Razão Social")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.razao_social,
+                        expression: "empresa.razao_social"
+                      }
+                    ],
+                    class:
+                      "form-control " +
+                      (_vm.errors.razao_social ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-03" },
+                    domProps: { value: _vm.empresa.razao_social },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.empresa,
+                          "razao_social",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.razao_social
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.razao_social[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-04" } },
+                    [_vm._v("CEP")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group" },
+                    [
+                      _c("the-mask", {
+                        class:
+                          "form-control " +
+                          (_vm.errors.cep ? "is-invalid" : ""),
+                        attrs: {
+                          mask: "#####-###",
+                          masked: true,
+                          type: "text",
+                          id: "up-04"
+                        },
+                        model: {
+                          value: _vm.empresa.cep,
+                          callback: function($$v) {
+                            _vm.$set(_vm.empresa, "cep", $$v)
+                          },
+                          expression: "empresa.cep"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.cep
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            _vm._v(
+                              "\n                  " +
+                                _vm._s(_vm.errors.cep[0]) +
+                                "\n                "
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "input-group-append" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "input-group-text",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.getCep(_vm.empresa.cep)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    buscar\n                  "
+                            )
+                          ]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-05" } },
+                    [_vm._v("Rua")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.rua,
+                        expression: "empresa.rua"
+                      }
+                    ],
+                    class:
+                      "form-control " + (_vm.errors.rua ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-05" },
+                    domProps: { value: _vm.empresa.rua },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.empresa, "rua", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.rua
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.rua[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-06" } },
+                    [_vm._v("Bairro")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.bairro,
+                        expression: "empresa.bairro"
+                      }
+                    ],
+                    class:
+                      "form-control " + (_vm.errors.bairro ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-06" },
+                    domProps: { value: _vm.empresa.bairro },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.empresa, "bairro", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.bairro
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.bairro[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-07" } },
+                    [_vm._v("Complemento")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.complemento,
+                        expression: "empresa.complemento"
+                      }
+                    ],
+                    class:
+                      "form-control " +
+                      (_vm.errors.complemento ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-07" },
+                    domProps: { value: _vm.empresa.complemento },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.empresa,
+                          "complemento",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.complemento
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.complemento[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "col-form-label", attrs: { for: "up-08" } },
+                    [_vm._v("Cidade")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.empresa.cidade,
+                        expression: "empresa.cidade"
+                      }
+                    ],
+                    class:
+                      "form-control " + (_vm.errors.cidade ? "is-invalid" : ""),
+                    attrs: { type: "text", id: "up-08" },
+                    domProps: { value: _vm.empresa.cidade },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.empresa, "cidade", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.cidade
+                    ? _c("div", { staticClass: "invalid-feedback" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.errors.cidade[0]) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-form-label",
+                        attrs: { for: "up-09" }
+                      },
+                      [_vm._v("Estado")]
+                    ),
+                    _vm._v(" "),
+                    _c("the-mask", {
+                      class:
+                        "form-control " + (_vm.errors.uf ? "is-invalid" : ""),
+                      attrs: {
+                        type: "text",
+                        mask: "AA",
+                        masked: true,
+                        id: "up-09"
+                      },
+                      model: {
+                        value: _vm.empresa.uf,
+                        callback: function($$v) {
+                          _vm.$set(_vm.empresa, "uf", $$v)
+                        },
+                        expression: "empresa.uf"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.uf
+                      ? _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.errors.uf[0]) +
+                              "\n              "
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-sm",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("\n              Cancelar\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-sm float-right",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.update()
+                      }
+                    }
+                  },
+                  [_vm._v("\n              salvar\n            ")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", [_vm._v("Atualizar dados da Empresa")])
     ])
   }
 ]

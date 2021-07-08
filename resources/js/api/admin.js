@@ -11,6 +11,10 @@ let api = {
     return axios.post(rota + "admin/empresa", params);
   },
 
+  EmpresaUpdate(params) {
+    return axios.put(rota + "admin/empresa/" + params.id , params);
+  },
+
   getCep(cep) {
     return axios.get(`https://viacep.com.br/ws/${cep}/json/`);
   },
