@@ -26,4 +26,10 @@ class EmpresaController extends Controller
         $empresa->update($request->all());
         return $empresa;
     }
+
+    public function destroy($id){
+        $empresa = Empresa::find($id);
+        $empresa->delete();
+        return 'ok';
+    }
 }

@@ -48,7 +48,12 @@
                           >
                             editar
                           </button>
-                          <button class="btn btn-danger btn-sm">excluir</button>
+                          <button
+                            @click.prevent="enviarDelete(empresa)"
+                            class="btn btn-danger btn-sm"
+                          >
+                            excluir
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -67,6 +72,7 @@
     </div>
     <CreateEmpresa ref="create"></CreateEmpresa>
     <UpdateEmpresa ref="update"></UpdateEmpresa>
+    <DeleteEmpresa ref="delete"></DeleteEmpresa>
   </div>
 </template>
 
@@ -75,9 +81,10 @@ import Menu from "../components/Menu";
 import api from "../../../api/admin";
 import CreateEmpresa from "./components/CreateEmpresa";
 import UpdateEmpresa from "./components/UpdateEmpresa";
+import DeleteEmpresa from "./components/DeleteEmpresa";
 export default {
   name: "Empresa",
-  components: { Menu, CreateEmpresa, UpdateEmpresa },
+  components: { Menu, CreateEmpresa, UpdateEmpresa, DeleteEmpresa },
   data() {
     return {
       loading: false,
@@ -106,6 +113,9 @@ export default {
     },
     enviarUpdate(empresa) {
       this.$refs.update.modalPut(empresa);
+    },
+    enviarDelete(empresa) {
+      this.$refs.delete.modalDel(empresa);
     },
   },
 };

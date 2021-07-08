@@ -1937,6 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../api/admin */ "./resources/js/api/admin.js");
 /* harmony import */ var _components_CreateEmpresa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/CreateEmpresa */ "./resources/js/views/admin/empresa/components/CreateEmpresa.vue");
 /* harmony import */ var _components_UpdateEmpresa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/UpdateEmpresa */ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue");
+/* harmony import */ var _components_DeleteEmpresa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/DeleteEmpresa */ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue");
 //
 //
 //
@@ -2009,6 +2010,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2018,7 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Menu: _components_Menu__WEBPACK_IMPORTED_MODULE_0__.default,
     CreateEmpresa: _components_CreateEmpresa__WEBPACK_IMPORTED_MODULE_2__.default,
-    UpdateEmpresa: _components_UpdateEmpresa__WEBPACK_IMPORTED_MODULE_3__.default
+    UpdateEmpresa: _components_UpdateEmpresa__WEBPACK_IMPORTED_MODULE_3__.default,
+    DeleteEmpresa: _components_DeleteEmpresa__WEBPACK_IMPORTED_MODULE_4__.default
   },
   data: function data() {
     return {
@@ -2046,6 +2055,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     enviarUpdate: function enviarUpdate(empresa) {
       this.$refs.update.modalPut(empresa);
+    },
+    enviarDelete: function enviarDelete(empresa) {
+      this.$refs["delete"].modalDel(empresa);
     }
   }
 });
@@ -2345,6 +2357,84 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this2.$toastr.e("Ocorreu um erro.");
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _api_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../api/admin */ "./resources/js/api/admin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      empresa: {}
+    };
+  },
+  methods: {
+    modalDel: function modalDel(empresa) {
+      this.empresa = empresa;
+      $("#delModal").modal("show");
+    },
+    delEmpresa: function delEmpresa(id) {
+      var _this = this;
+
+      _api_admin__WEBPACK_IMPORTED_MODULE_0__.default.EmpresaDelete(id).then(function () {
+        _this.$toastr.s("Excluido com sucesso!");
+
+        $("#delModal").modal("hide");
+
+        _this.$parent.getEmpresa();
+      })["catch"](function (error) {
+        _this.$toastr.e("Ocorreu um erro.");
       });
     }
   }
@@ -3880,6 +3970,9 @@ var api = {
   },
   EmpresaUpdate: function EmpresaUpdate(params) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().put(rota + "admin/empresa/" + params.id, params);
+  },
+  EmpresaDelete: function EmpresaDelete(id) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().delete(rota + "admin/empresa/" + id);
   },
   getCep: function getCep(cep) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://viacep.com.br/ws/".concat(cep, "/json/"));
@@ -41080,6 +41173,45 @@ component.options.__file = "resources/js/views/admin/empresa/components/CreateEm
 
 /***/ }),
 
+/***/ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/DeleteEmpresa.vue ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteEmpresa.vue?vue&type=template&id=11eb626c& */ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c&");
+/* harmony import */ var _DeleteEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _DeleteEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/admin/empresa/components/DeleteEmpresa.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/views/admin/empresa/components/UpdateEmpresa.vue ***!
@@ -41518,6 +41650,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
   !*** ./resources/js/views/admin/empresa/components/UpdateEmpresa.vue?vue&type=script&lang=js& ***!
@@ -41725,6 +41873,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateEmpresa_vue_vue_type_template_id_1e51a6d9___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateEmpresa_vue_vue_type_template_id_1e51a6d9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateEmpresa.vue?vue&type=template&id=1e51a6d9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/CreateEmpresa.vue?vue&type=template&id=1e51a6d9&");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteEmpresa_vue_vue_type_template_id_11eb626c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteEmpresa.vue?vue&type=template&id=11eb626c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c&");
 
 
 /***/ }),
@@ -42132,8 +42297,20 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "button",
-                                    { staticClass: "btn btn-danger btn-sm" },
-                                    [_vm._v("excluir")]
+                                    {
+                                      staticClass: "btn btn-danger btn-sm",
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.enviarDelete(empresa)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                          excluir\n                        "
+                                      )
+                                    ]
                                   )
                                 ]
                               )
@@ -42162,7 +42339,9 @@ var render = function() {
       _vm._v(" "),
       _c("CreateEmpresa", { ref: "create" }),
       _vm._v(" "),
-      _c("UpdateEmpresa", { ref: "update" })
+      _c("UpdateEmpresa", { ref: "update" }),
+      _vm._v(" "),
+      _c("DeleteEmpresa", { ref: "delete" })
     ],
     1
   )
@@ -42814,6 +42993,80 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/empresa/components/DeleteEmpresa.vue?vue&type=template&id=11eb626c& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "delModal",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "delModalLabel",
+        "aria-hidden": "true",
+        "data-backdrop": "static"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-body" }, [
+            _c("h4", [
+              _vm._v("\n          Deseja realmente excluir : "),
+              _c("b", [_vm._v(_vm._s(_vm.empresa.nome) + ".")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger btn-sm",
+                attrs: { type: "button", "data-dismiss": "modal" }
+              },
+              [_vm._v("\n          Cancelar\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success btn-sm pull-right",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.delEmpresa(_vm.empresa.id)
+                  }
+                }
+              },
+              [_vm._v("\n          Sim\n        ")]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
