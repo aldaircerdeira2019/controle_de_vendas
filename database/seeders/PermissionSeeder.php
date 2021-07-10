@@ -17,35 +17,35 @@ class PermissionSeeder extends Seeder
         DB::table('permissions')->insert([
             [
                 'name'=>'admin_view',
-                'guard_name'=> 'vizualizar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'admin_create',
-                'guard_name'=> 'cadastrar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'admin_edit',
-                'guard_name'=> 'atualizar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'admin_del',
-                'guard_name'=> 'apagar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'empresa_view',
-                'guard_name'=> 'vizualizar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'empresa_create',
-                'guard_name'=> 'cadastrar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'empresa_edit',
-                'guard_name'=> 'atualizar'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'empresa_del',
-                'guard_name'=> 'apagar'
+                'guard_name'=> 'sanctum'
             ],
         ]);
     }

@@ -17,11 +17,11 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             [
                 'name'=>'Administrador',
-                'guard_name'=> 'usuario administrador'
+                'guard_name'=> 'sanctum'
             ],
             [
                 'name'=>'Empresa',
-                'guard_name'=> 'usuario de empresa'
+                'guard_name'=> 'sanctum'
             ],
         ]);
     }
