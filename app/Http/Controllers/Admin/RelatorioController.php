@@ -9,6 +9,7 @@ use App\Models\Venda;
 class RelatorioController extends Controller
 {
     public function index(Request $request, Venda $venda){
+        $this->authorize('admin_view');
         $relatorio = $venda->filter($request->all());
         return response()->json($relatorio);
     }

@@ -10,6 +10,13 @@ use App\Models\Empresa;
 
 class EmpresaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:admin_view')->only('index');
+        $this->middleware('can:admin_create')->only('store');
+        $this->middleware('can:admin_edit')->only('update');
+        $this->middleware('can:admin_del')->only('destroy');
+    }
+
     public function index(Request $request){
         $empresas = Empresa::orderBy('id','desc')->get();
         return response()->json($empresas);

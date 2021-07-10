@@ -22,6 +22,8 @@ class EmpresaService
             'empresa_id' => $empresa->id,
         ]);
 
+        $user->assignRole('Empresa');
+
         return $empresa;
     }
 }
